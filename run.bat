@@ -1,3 +1,5 @@
+color 1f
 cd Code
 cd src
-java -jar RandGram.jar
+cls
+java RandGram

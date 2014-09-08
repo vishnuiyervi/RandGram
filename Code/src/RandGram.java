@@ -2,11 +2,13 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+import javax.swing.*;
+
 public class RandGram
 {
   private static int numTypes;
   private static String senType;
-  
+
   public static void main(String[] args)
     throws IOException
   {
@@ -42,7 +44,56 @@ public class RandGram
       repeat(args);
     }
   }
-  
+  /*
+  public static void main(String [] args) throws IOException
+  {
+	  numTypes = (int)(Math.random() * 5.0D + 1.0D);
+	  String[] types = new String[numTypes];
+	  
+	  senType = getSenType();
+	  int count = 0;
+	  
+	  do
+	  {
+	     types[count] = randGram();
+	     if (!isDuplicate(types, count)) 
+	     {
+	       count++;
+	     }
+	  } while (count < numTypes);
+	  
+	  String str = senType + " sentence:\t";
+	  
+	  for (int i = 0; i < numTypes - 1; i++) 
+	  {
+	      str.concat(types[i] + ", ");
+	  }
+	  
+	  str.concat("and " + types[(numTypes - 1)]);
+	  
+	  str.concat("\n\nDo you want another one? Type in [Y/N]");
+	  
+	  String s = JOptionPane.showInputDialog(str);
+	  
+	  boolean bool = true;
+	  
+	  while(bool)
+	  {
+		  if(s.toUpperCase().equals("Y"))
+		  {
+			  main(args);
+		  }
+		  else if (s.toUpperCase().equals("N"))
+		  {
+			  return;
+		  }
+		  else
+		  {
+			  s = JOptionPane.showInputDialog("Do you want another one? Type in [Y/N]");
+		  }
+	  }
+  }
+  */
   public static String getSenType()
   {
     double r = Math.random();
