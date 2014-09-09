@@ -1,14 +1,16 @@
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
-
+import java.io.*;
+import java.awt.*;
 import javax.swing.*;
 
-public class RandGram
+
+public class RandGram extends Applet
 {
   private static int numTypes;
   private static String senType;
-
+  /*
   public static void main(String[] args)
     throws IOException
   {
@@ -43,6 +45,41 @@ public class RandGram
     if (choice == 'Y') {
       repeat(args);
     }
+  }
+  */
+  public static void draw(Graphics g)
+  {
+	  g.setColor(new Color(0,0,0));
+	  g.drawRect(0,0,800,300);
+	  Font trb = new Font("Verdana", Font.BOLD, 18);
+	  g.setFont(trb);
+	  numTypes = (int)(Math.random() * 5.0D + 1.0D);
+	  String[] types = new String[numTypes];
+	  
+	  senType = getSenType();
+	  int count = 0;
+	  
+	  do
+	  {
+	     types[count] = randGram();
+	     if (!isDuplicate(types, count)) 
+	     {
+	       count++;
+	     }
+	  } while (count < numTypes);
+	  
+	  String str = senType + " sentence:\t";
+	  
+	  for (int i = 0; i < numTypes - 1; i++) 
+	  {
+	      str.concat(types[i] + ", ");
+	  }
+	  
+	  str.concat("and " + types[(numTypes - 1)]);
+	  
+	  str.concat("\n\nDo you want another one? Type in [Y/N]");
+	  
+	  g.drawString(str,15,15);
   }
   /*
   public static void main(String [] args) throws IOException
